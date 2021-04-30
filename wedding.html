@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wedding</title>
+	<script type="text/javascript">
+	function changeColor(color){
+		document.getElementById('div1').style.backgroundColor=color;
+	}	
+
+	function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+/* Event fired on the drag target */
+document.addEventListener("dragstart", function(event) {
+  event.dataTransfer.setData("Text", event.target.id);
+  document.getElementById("demo").innerHTML = "Started to drag the p element.";
+});
+
+/* Events fired on the drop target */
+document.addEventListener("dragover", function(event) {
+  event.preventDefault();
+});
+
+document.addEventListener("drop", function(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("Text");
+  event.target.appendChild(document.getElementById(data));
+  document.getElementById("demo").innerHTML = "The p element was dropped";
+});
+
+</script>
+		<link rel="stylesheet" href="colorpick.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	
+	<style type="text/css">
+
+		@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .div1 , .box {
+    width: 80%;
+    padding: 0;
+  }
+  .div1 , .box {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .div1 , .box {
+    width: 100%;
+  }
+}
+
+	.result1, .result2, .result3 {
+	 display: inline-block;
+ 	 width: 100px; 
+  	height: auto;
+ 	 margin: 20px;
+ 	 padding: 10px;
+ 	 border: 1px solid #aaaaaa;
+	border-color: olive;
+	align-items: center;
+
+			
+}
+
+		#div1 {
+
+  		width: 400px;
+  		height: auto;
+  		padding: 10px;
+  		border: 1px solid #aaaaaa;
+}
+		.flex-center{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+
+}
+		#box{
+			width: 400px;
+			height: 400px;
+			border-radius:1px;
+			background-color: #ffffff;
+		}
+
+		#div1{
+			display: inline-block;
+			float: left; 
+			background-color: yellow;
+			width: 50%;
+			height: 500px;
+			padding: 20px; 
+			align-items: center;
+			border-radius: 2px;
+			
+		}
+
+		.invited, .marriage {
+			text-align: center;
+			font-family: "Sofia", sans-serif;
+			color: black;
+		}
+
+		#name{
+			text-align: center;
+			font-family: "Sofia", sans-serif;
+			color: black;
+		}
+
+		.date, .venue {
+			text-align: center;
+			font-family: font-family: "Times New Roman", Times, serif;
+		}
+
+	
+</style>
+</head>
+<body>
+	<h3>Drag and Drop the texts here!</h3>
+	<div id="result1" draggable="true" id="dragtarget"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Rebecca");
+  // Retrieve
+  document.getElementById("result1").innerHTML = localStorage.getItem("lastname");
+} else {
+  document.getElementById("result1").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+<div id="result2" draggable="true" id="dragtarget"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Fateen");
+  // Retrieve
+  document.getElementById("result2").innerHTML = localStorage.getItem("lastname");
+} else {
+  document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+
+<div id="result3" draggable="true" id="dragtarget"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("Congratulation", "Contact us if your are coming! +673 87322992");
+  // Retrieve
+  document.getElementById("result3").innerHTML = localStorage.getItem("Congratulation");
+} else {
+  document.getElementById("result3").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+<!-- <div id="result4" draggable="true" id="dragtarget"></div> -->
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("Greetings", "You are invited to our wedding");
+  // Retrieve
+  document.getElementById("result4").innerHTML = localStorage.getItem("Greetings");
+} else {
+  document.getElementById("result4").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+
+
+<div id="div1">
+	<div class="droptarget">To:</div>
+	<div class="droptarget">From:</div>
+	
+	<div class="invited"><h2>You're Invited</h2></div>
+	<div class="marriage"><h2>To Celebrate The Marriage of</h2></div>
+	<div contenteditable="true" id="name" contenteditable="true"><h2>Rebecca & Future Husband</h2></div>
+	<div class="date" contenteditable="true"><h3>25.05.2021, Tuesday</h3></div>
+	<div class="venue" contenteditable="true"><h3>Rizqun International Hotel</h3></div>
+	<div class="droptarget">Messages:</div>
+	</div>
+
+
+	<div id="box">
+	
+	<div><p>try changing the background color for the card box color here</p>
+		<input type="Color" name="co" onchange="changeColor(this.value)">
+	<div><button>Preview Card</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+</body>
+</html>

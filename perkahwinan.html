@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Perkahwinan</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	<link rel="stylesheet" href="colorpick.css">
+
+	<style type="text/css">
+		#div1{
+			display: inline-block;
+			float: left; 
+			background-color: magenta;
+			width: 30%;
+			height: 500px;
+			padding: 10px; 
+			align-items: center;
+			border-radius: 8px;
+			text-align: center;
+			
+		}
+		.one, .two , .three  {
+
+		font-family: "Sofia", sans-serif;
+			color: black;
+			font-size: 1em;
+			float: front
+		}
+
+		.three {
+			font-size: 2em;
+
+		}
+
+		.four, .six , .seven {
+			font-family: "Times New Roman", Times, serif;
+		}
+
+		.droptarget {
+  		float: left; 
+ 		 margin: 10px;
+ 		 padding: 10px;
+ 		 border: 1px solid black;
+			height: 200px;
+			width: 200px;
+			padding: 20px; 
+			align-items: center;
+			border-radius: 10px;
+}
+
+		.div > .pic {
+			border: 1px solid black;
+			height: 200px;
+			width: 200px;
+			align-items: center;
+
+		}
+
+		.daripada{
+			float: left;
+			background-color: red;
+		}
+
+		.kepada{
+			float: right;
+			background-color: yellow;
+		}
+
+		.mesej {
+			float: bottom;
+		}
+
+		@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .div1, .droptarget , .box {
+    width: 80%;
+    padding: 0;
+  }
+  ..div1, .droptarget , .box {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  ..div1, .droptarget , .box {
+    width: 100%;
+  }
+}
+	</style>
+</head>
+<body>
+
+	<h3>Drag and Drop the texts here!</h3>
+	<div id="result1" draggable="true" id="dragtarget"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Adam");
+  // Retrieve
+  document.getElementById("result1").innerHTML = localStorage.getItem("lastname");
+} else {
+  document.getElementById("result1").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+
+<div id="result2" draggable="true" id="dragtarget"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Nur");
+  // Retrieve
+  document.getElementById("result2").innerHTML = localStorage.getItem("lastname");
+} else {
+  document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+
+<div id="result3" draggable="true" id="dragtarget"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("Congratulation", "Hubungi kami jika awda hadir kemajlis Perkahwinan kami! +673 87322992");
+  // Retrieve
+  document.getElementById("result3").innerHTML = localStorage.getItem("Congratulation");
+} else {
+  document.getElementById("result3").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("Greetings", "You are invited to our wedding");
+  // Retrieve
+  document.getElementById("result4").innerHTML = localStorage.getItem("Greetings");
+} else {
+  document.getElementById("result4").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+<div id="div1">
+	<div class="kepada" draggable="true" class="dragtarget">Kepada:</div>
+	
+	<div class="daripada" draggable="true" class="dragtarget">Daripada:</div>
+	<div class="one">Awda Dijemput Hadir Ke</div>
+	<div class="two">Walimatul Urus</div>
+	<div class="three" contenteditable="true">ADAM & HAWA</div>
+	<div class="four" contenteditable="true">11HB Muharram 1443H | 19HB Ogos 2021M</div>
+	<div class="five" contenteditable="true">LOCATION</div>
+	
+	<div class="mesej" draggable="true" class="dragtarget">Mesej Ringkas:</div>
+	<div class="pic" class="droptarget"></div>
+	<p>Drop the picture here</p>
+	</div>
+
+
+	<div class="droptarget"><img src="weddingpic.jpg" width="200" height="200" draggable="true" id="dragtarget"></div>
+	<h3>Drop the picture</h3>
+
+	<div id="box">
+	
+	<div><p>try changing the background color for the card box color here</p>
+		<input type="Color" name="co" onchange="changeColor(this.value)">
+
+
+	<div><button>Preview Card</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	<script>
+
+
+		function changeColor(color){
+		document.getElementById('div1').style.backgroundColor=color;
+	}	
+
+/* Event fired on the drag target */
+document.addEventListener("dragstart", function(event) {
+  event.dataTransfer.setData("Text", event.target.id);
+  document.getElementById("demo").innerHTML = "Started to drag the p element.";
+});
+
+/* Events fired on the drop target */
+document.addEventListener("dragover", function(event) {
+  event.preventDefault();
+});
+
+document.addEventListener("drop", function(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("Text");
+  event.target.appendChild(document.getElementById(data));
+  document.getElementById("demo").innerHTML = "The p element was dropped";
+});
+</script>
+
+</div>
+</body>
+</html>
